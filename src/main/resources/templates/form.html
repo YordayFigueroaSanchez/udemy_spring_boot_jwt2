@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container py-4">
+		<div class="card">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<!-- 		PANEL DE LISTA DE ERRORES -->
+				<div th:object="${cliente}" th:remove="tag">
+					<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+						<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+					</ul>
+				</div>
+				<form th:action="@{/form}" th:object="${cliente}" method="post" enctype="multipart/form-data">
+
+					<!-- NOMBRE			 -->
+					<div class="form-group row">
+						<div class="col-sm-2">
+							<label for="nombre" class="col-form-label">Nombre</label>
+						</div>
+						<div class="col-sm-6">
+							<input type="text" id="nombre" th:field="*{nombre}"
+								class="form-control">
+						</div>
+						<div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
+							class="alert alert-danger form-control"></div>
+					</div>
+
+					<!-- APELLIDO			 -->
+					<div class="form-group row">
+						<div class="col-sm-2">
+							<label for="apellido" class="col-form-label">Apellido</label>
+						</div>
+						<div class="col-sm-6">
+							<input type="text" id="apellido" th:field="*{apellido}"
+								class="form-control">
+						</div>
+						<div th:if="${#fields.hasErrors('apellido')}"
+							th:errors="*{apellido}" class="alert alert-danger form-control"></div>
+					</div>
+
+					<!-- EMAIL			 -->
+					<div class="form-group row">
+						<div class="col-sm-2">
+							<label for="email" class="col-form-label">Email</label>
+						</div>
+						<div class="col-sm-6">
+							<input type="text" id="email" th:field="*{email}"
+								class="form-control">
+						</div>
+						<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+							class="alert alert-danger form-control"></div>
+					</div>
+
+					<!-- FECHA			 -->
+					<div class="form-group row">
+						<div class="col-sm-2">
+							<label for="fecha" class="col-form-label">Fecha</label>
+						</div>
+						<div class="col-sm-6">
+							<input type="text" id="fecha" th:field="*{createAt}"
+								class="form-control">
+						</div>
+						<div th:if="${#fields.hasErrors('createAt')}"
+							th:errors="*{createAt}" class="alert alert-danger form-control"></div>
+					</div>
+<!-- 					FOTO -->
+					<div class="form-group row">
+						<div class="col-sm-2">
+							<label for="file" class="col-form-label">Foto</label>
+						</div>
+						<div class="col-sm-6">
+							<input type="file" name="file" class="form-control">
+						</div>
+					</div>
+
+					<!-- VALORSECRETO -->
+					<div>
+						<input type="hidden" th:field="*{id}">
+					</div>
+
+					<!-- BTN ENVIAR -->
+					<div>
+						<div>
+							<input type="submit" value="Enviar" class="btn btn-primary">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

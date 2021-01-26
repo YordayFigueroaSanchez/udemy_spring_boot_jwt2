@@ -1,0 +1,50 @@
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Jeisell','Morera','jeisell@correo.com','2020-12-25','');
+INSERT INTO clientes (nombre, apellido, email, create_at,foto) VALUES ('Yorday','Figueroa','yorday@correo.com','2020-12-26','');
+
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Producto01',1001,NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Producto02',1002,NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Producto03',1003,NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Producto04',1004,NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Producto05',1005,NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Producto06',1006,NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Producto07',1007,NOW());
+
+INSERT INTO facturas (descripcion, observacion, cliente_id, created_at) VALUES ('Factura01','Factura01',1,NOW());
+INSERT INTO facturas_items (cantidad,factura_id,producto_id) VALUES (1,1,1);
+INSERT INTO facturas_items (cantidad,factura_id,producto_id) VALUES (4,1,2);
+INSERT INTO facturas (descripcion, observacion, cliente_id, created_at) VALUES ('Factura02','Factura02',1,NOW());
+INSERT INTO facturas_items (cantidad,factura_id,producto_id) VALUES (3,2,1);
+INSERT INTO facturas_items (cantidad,factura_id,producto_id) VALUES (2,2,2);
+
+INSERT INTO users (username,password,enabled) VALUES ('andres','$2a$10$Fnt14LWBMIDeCviZseY2PuYPumqqrBXns6S2G7b6aGR4YVCSdmJjG',1);
+INSERT INTO users (username,password,enabled) VALUES ('admin','$2a$10$XNNjc4eDyN8bpbIPsHYS6eeqjX5A0U0yiIpMvBqQhwX9Xx.WhWlzy',1);
+
+INSERT INTO authorities (user_id,authority) VALUES (1,'ROLE_USER');
+INSERT INTO authorities (user_id,authority) VALUES (2,'ROLE_USER');
+INSERT INTO authorities (user_id,authority) VALUES (2,'ROLE_ADMIN');

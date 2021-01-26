@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container py-4">
+		<div class="card">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<h4 class="card-title">
+					<a th:href="@{/factura/form/} + ${cliente.id}" sec:authorize="hasRole('ROLE_ADMIN')"
+						th:text="'Crear Factura'" class="btn btn-primary btn-xs"></a>
+				</h4>
+				<img th:if="${#strings.length(cliente.foto) > 0}"
+					th:alt="${cliente.foto}" th:src="@{'/uploads/' + ${cliente.foto}}"
+					class="img-thumbnail rounded float-left" style="max-width: 25%;">
+				<ul class="list-group">
+					<li class="list-group-item" th:text="${cliente.nombre}"></li>
+					<li class="list-group-item" th:text="${cliente.apellido}"></li>
+					<li class="list-group-item" th:text="${cliente.email}"></li>
+					<li class="list-group-item" th:text="${cliente.createAt}"></li>
+				</ul>
+				<div th:if="${#lists.isEmpty(cliente.facturas)}"
+					class="alert alert-info my-4" th:text="'Cliente sin factura.'"></div>
+				<table th:if="${not #lists.isEmpty(cliente.facturas)}"
+					class="table table-bordered my-4">
+					<thead>
+						<tr>
+							<th>folio</th>
+							<th>descripcion</th>
+							<th>fecha</th>
+							<th>total</th>
+							<th>detalle</th>
+							<th>eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="factura: ${cliente.facturas}">
+							<td th:text="${factura.id}"></td>
+							<td th:text="${factura.descripcion}"></td>
+							<td th:text="${factura.createdAt}"></td>
+							<td th:text="${factura.total}"></td>
+							<td><a th:href="@{'/factura/ver/' + ${factura.id}}"
+								th:text="'ver'" class="btn btn-xs btn-primary"></a></td>
+							<td><a th:href="@{'/factura/eliminar/' + ${factura.id}}"
+								th:text="'eliminar'" class="btn btn-xs btn-danger"
+								onclick="return confirm('Seguro de eliminar?');"></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
