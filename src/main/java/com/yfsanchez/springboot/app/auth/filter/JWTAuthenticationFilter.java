@@ -2,6 +2,7 @@ package com.yfsanchez.springboot.app.auth.filter;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.security.Key;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -33,6 +34,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter{
+	
+	public static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 
 	
 	private AuthenticationManager authenticationManager;
@@ -90,21 +93,21 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			Authentication authResult) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		String username = ((User) authResult.getPrincipal()).getUsername();
-		SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
+//		SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 		
-		String secretKeyString = new String(secretKey.getEncoded(), StandardCharsets.UTF_16);
-		logger.info("SecretKey: " + secretKeyString);
+		String secretKeyString = new String(SECRET_KEY.getEncoded(), StandardCharsets.UTF_16);
+		logger.info("Authentication SecretKey: " + secretKeyString);
 		
 		Collection<? extends GrantedAuthority> roles = authResult.getAuthorities();
 		Claims claims = Jwts.claims();
 		claims.put("authorities", new ObjectMapper().writeValueAsString(roles));
 		
         String token = Jwts.builder()
+        				.setClaims(claims)
                         .setSubject(username)
-                        .signWith(secretKey)
+                        .signWith(SECRET_KEY)
                         .setIssuedAt(new Date())
                         .setExpiration(new Date(System.currentTimeMillis() + 14000000L))
-                        .setClaims(claims)
                         .compact();
         response.addHeader("Authorization", "Bearer "+ token);
         

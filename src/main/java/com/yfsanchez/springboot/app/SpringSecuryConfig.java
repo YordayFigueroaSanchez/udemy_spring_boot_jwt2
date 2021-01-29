@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import com.yfsanchez.springboot.app.auth.filter.JWTAuthenticationFilter;
+import com.yfsanchez.springboot.app.auth.filter.JWTAuthorizationFilter;
 import com.yfsanchez.springboot.app.auth.handler.LoginSuccessHandler;
 import com.yfsanchez.springboot.app.models.service.JpaUserDetailsService;
 
@@ -58,6 +59,7 @@ public class SpringSecuryConfig extends WebSecurityConfigurerAdapter{
 		
 			.and()
 			.addFilter(new JWTAuthenticationFilter(authenticationManager()))
+			.addFilter(new JWTAuthorizationFilter(authenticationManager()))
 			.csrf().disable()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
